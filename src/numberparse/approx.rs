@@ -438,7 +438,7 @@ impl<'de> Deserializer<'de> {
                 // can we omit this: buf.len() - byte_count >= 8
 
                 if is_made_of_eight_digits_fast(unsafe {
-                    buf.get_kinda_unchecked(byte_count..)
+                    buf.get_kinda_unchecked(byte_count..byte_count + 8)
                         .try_into()
                         .unwrap_unchecked()
                 }) {
